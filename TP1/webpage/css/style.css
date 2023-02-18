@@ -1,0 +1,133 @@
+body{
+  font-family: 'Sora', sans-serif;
+  margin: 0;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.factos { 
+  background : #FFFFFF;
+  height: 100vh; /*as tall as the viewport height*/
+  color : black;
+  margin-bottom: 5em;
+}
+
+
+footer {
+  background-color:#477050;
+  color:white;
+  text-align:center;
+  min-height: 5em;
+  padding: 0.3em;
+}
+
+nav{
+  height: fit-content;
+  display: flex;
+  justify-content:space-between;
+  position: sticky;
+  top: 0;
+  position: -webkit-sticky; /* Safari */
+  background-color: #CE2939;
+}
+
+ul{
+  display: flex;
+  list-style-type: none;
+  justify-content:space-around;
+  font-size: 1.4em;
+}
+
+li{
+  padding: 0.3em;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+h1{
+  font-size:5.625em;
+}
+
+h2 {
+  font-size:3.125em;
+}
+
+h3 {
+  font-size:2.5em;
+}
+
+p{
+  margin:0;
+  font-size:1.875em;
+  font-weight:500;
+}
+
+
+.factos-container{
+  padding: 0.5em;
+  margin: 2em;
+  margin-bottom: 0.5em;
+  background-color: rgb(249, 249, 249);
+  border-radius: 2em;
+  border: 0.2em solid #c8c8c8;
+  display: flex;
+  height: fit-content;
+  justify-content:space-between;
+  align-items: center;
+}
+
+.info{
+  padding: 0.5em;
+  margin:2em;
+}
+
+.bandeira {
+  padding: 0.5em;
+  margin: 2em;
+}
+
+
+.container{
+  padding:2em;
+  margin: 0.5em;
+}
+
+
+hr{
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top:3.5em;
+  margin-bottom:3.5em;
+}
+
+hr.autor {
+  margin-bottom:0.8em;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+

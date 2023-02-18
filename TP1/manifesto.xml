@@ -2,22 +2,29 @@
 <manifesto>
     <meta>
         <título>TPC 1</título>
-        <subtítulo></subtítulo>
-        <data>2023-02-15</data>
+        <subtítulo>Conclusão do exercício das cidades; <i>Webpage</i> sobre tema começado por H </subtítulo>
+        <data>2023-02-18</data>
         <autor>
             <nome>Miguel Ângelo Machado Martins</nome>
             <id>PG50655</id>
-            <gitlink>Link para o repo</gitlink>
+            <gitlink>https://github.com/MiguelAMM42/RPCW2023</gitlink>
         </autor>
-        <uc>RPCW</uc>
+        <uc>Representação e Processamento de Conhecimento na Web(RPCW)</uc>
     </meta>
     <resumo>
-        <p>Parágrafo 1</p>
         <!-- Possibilidade de bolds, itálicos e links -->
-        <p>Parágrafo 2 <b>isto fica a bold</b> <i>isto fica a itálico</i></p>
-        <p>Parágrafo 3 com uma <xref url="URL para o recurso">referência externa</xref></p>
+        <!-- <b>isto fica a bold</b> <i>isto fica a itálico</i> -->
+        <!-- <xref url="URL para o recurso">referência externa</xref> -->
+        <p>Para primeiro TPC foi solicitado que se concluísse o exercício do processamento das cidades começado na aula</p>
+        <p>Estando já o cerne da resolução concebido (índice e cidades ordenadas e renderizadas por ordem alfabética depois de lido o <i>dataset JSON</i>), era necessário completar a <i>webpage</i> gerada com as ligações entre as diferentes cidade</p>
+        <p>Essa lista de ligações deveria ter um <i>link</i> para a respetiva cidade de ligação e a distância à mesma</p>
+        <p>Além disso foi também solicitado que se concebesse uma <i>webpage</i> sobre um dos seguintes temas começados por "H": "Hipopotamos", "Holofote", "Hungria" ou "Henriqueta"</p>
+        <p>O aspeto da mesma deveria ser escolhido pelo aluno</p>
+        <p>O tema escolhido foi "Hungria"</p>
     </resumo>
     <resultados>
-        <resultado path="link relativo para o ficheiro">Descrição do que é</resultado>
+        <resultado path="cidades/cidades.py">Programa em <i>Python</i> para a resolução do problema das cidades</resultado>
+        <resultado path="cidades/cidades.html"><i>Webpage</i> com as informações sobre as cidades, produzida pelo programa <i>Python</i></resultado>
+        <resultado path="webpage/hungria.html"><i>Webpage</i> sobre "Hungria"</resultado>
     </resultados>
 </manifesto>
