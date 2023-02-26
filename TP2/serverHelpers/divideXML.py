@@ -14,6 +14,7 @@ def desmembrarXML(xml):
         output_xml.write(arqelem.prettify())
         numelems += 1
     print("Número de elementos: ", numelems-1)
+    return numelems-1
 
 
 if __name__ == '__main__':
