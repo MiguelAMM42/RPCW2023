@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifesto>
+    <meta>
+        <título>TPC 3</título>
+        <subtítulo>Criação dum serviço de consulta sobre o <i>dataset</i> de pessoas.</subtítulo>
+        <data>2023-03-04</data>
+        <autor>
+            <nome>Miguel Ângelo Machado Martins</nome>
+            <id>PG50655</id>
+            <gitlink>https://github.com/MiguelAMM42/RPCW2023</gitlink>
+        </autor>
+        <uc>Representação e Processamento de Conhecimento na Web(RPCW)</uc>
+    </meta>
+    <resumo>
+        <!-- Possibilidade de bolds, itálicos e links -->
+        <!-- <b>isto fica a bold</b> <i>isto fica a itálico</i> -->
+        <!-- <xref url="URL para o recurso">referência externa</xref> -->
+        <p>Todas as tarfeas solicitadas foram realizadas, tendo sido criada uma página principal que remete para as seguintes operações:</p>
+        <p><b>Listar as pessoas:</b> apresenta uma lista de indivíduos numa tabela exibindo os campos id, nome, idade, sexo e cidade;</p> 
+        <p><b>Consultar uma pessoa:</b> ao clicar numa linha da tabela o sistema responde com uma página HTML com toda a informação da pessoa;</p>
+        <p><b>Distribuição por sexo:</b> o sistema responde com uma página onde se pode consultar o número de pessoas de cada sexo e aceder à lista dessas pessoas;</p>
+        <p><b>Distribuição por desporto:</b> o sistema responde com uma página onde se pode consultar o número de pessoas que pratica cada um dos desportos (lista ordenada descendentemente) e aceder à lista dessas pessoas;</p>
+        <p><b>Top10 de profissões:</b> o sistema responde com uma página onde se pode consultar as 10 profissões mais exercidas e aceder à lista de pessoas de cada uma dessas profissões.</p>
+        
+    </resumo>
+    <resultados>
+        <resultado path="dataHelpers/adID.py"><i>Script Python</i> para adicionar um <i>id</i> a cada registo, bem como juntar os 4 <i>datasets</i></resultado>
+        <resultado path="server/mypages.js">Servidor <i>NodeJS</i> para gerar as páginas HTML</resultado>
+        <resultado path="server/pessoas_server.js">Módulo JS com o servidor <i>Node.js per se</i>.</resultado>
+        <resultado path="styles/w3.css">Ficheiro <i>CSS</i> da <i>W3 Schools</i> usado para embelezar as páginas HTML geradas.</resultado>
+        <resultado path="README.md">Contextualização do uso do <i>json-server</i> como REST API.</resultado>
+    </resultados>
+</manifesto>

@@ -155,7 +155,8 @@ http.createServer(function(req, res){
                     return acc
                 }, {})
 
-                var profissoesOrdenadas = Object.keys(profissoesContadas).sort((a,b) => profissoesContadas[b] - profissoesContadas[a])
+                var profissoesOrdenadas = Object.keys(profissoesContadas).sort((a,b) => (profissoesContadas[a] > profissoesContadas[b]? -1 : 1))
+                // var profissoesOrdenadas = Object.keys(profissoesContadas).sort((a,b) => profissoesContadas[b] - profissoesContadas[a])
 
                 let top10Profissoes = profissoesOrdenadas.slice(0,10)
 
@@ -189,6 +190,90 @@ http.createServer(function(req, res){
                 var pessoas = resp.data // para ter só os dados
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
                 res.end(mypages.pessoasPage(pessoas,"Pessoas com profissão: " + decodeURIComponent(profissao))); // o conteudo da pagina é criado no mypages
+            })
+            .catch(erro => {
+                // sintaxe alternativa de funcoes em JS
+                console.log("Erro: " + erro)
+                // tambem queremos que o cliente veja o erro: nao so na consola
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end("ERRO: " + erro)
+            })
+    }else if(dicURL.pathname == "/desportos" ){
+        axios.get("http://localhost:3000/pessoas")
+            .then(function (resp) {
+        
+                var pessoas = resp.data 
+
+                
+                var desportos = pessoas.map(p => p.desportos)
+
+                var desportosDict = {}
+
+
+                for(let i = 0; i < desportos.length; i++){
+                    for(let j = 0; j < desportos[i].length; j++){
+                        if(desportos[i][j] in desportosDict){
+                            desportosDict[desportos[i][j]].push(JSON.parse(JSON.stringify(pessoas[i])))
+                        }else{
+                            desportosDict[desportos[i][j]] = [JSON.parse(JSON.stringify(pessoas[i]))]
+                        }
+                    }
+                }
+
+
+                let desportosOrdenados = Object.keys(desportosDict).sort((a,b) => (desportosDict[a].length > desportosDict[b].length) ? -1 : 1)
+
+
+                for(let i = 0; i < desportosOrdenados.length; i++){
+                    desportosOrdenados[i] = {
+                        desporto: desportosOrdenados[i],
+                        pessoas: desportosDict[desportosOrdenados[i]]
+                    }
+                }
+
+                //console.log(desportosOrdenados)
+
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end(mypages.desportos(desportosOrdenados));
+            })
+            .catch(erro => {
+                // sintaxe alternativa de funcoes em JS
+                console.log("Erro: " + erro)
+                // tambem queremos que o cliente veja o erro: nao so na consola
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end("ERRO: " + erro)
+            })
+
+    }else if(dicURL.pathname.startsWith("/desporto/")) {
+        var desporto = dicURL.pathname.substring(10); // valor depois de "pessoas/"
+        console.log("Desporto: " + desporto)
+        axios.get(`http://localhost:3000/pessoas`)
+            .then(function (resp) {
+
+                var pessoas = resp.data 
+
+                
+                var desportos = pessoas.map(p => p.desportos)
+
+                var desportosDict = {}
+
+
+                for(let i = 0; i < desportos.length; i++){
+                    for(let j = 0; j < desportos[i].length; j++){
+                        if(desportos[i][j] in desportosDict){
+                            desportosDict[desportos[i][j]].push(JSON.parse(JSON.stringify(pessoas[i])))
+                        }else{
+                            desportosDict[desportos[i][j]] = [JSON.parse(JSON.stringify(pessoas[i]))]
+                        }
+                    }
+                }
+
+                var pessoasDesporto = desportosDict[decodeURIComponent(desporto)]
+
+                let pessoasDesportoOrd = pessoasDesporto.sort((a,b) => (a.nome < b.nome) ? -1 : 1)
+
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end(mypages.pessoasPage(pessoasDesportoOrd,"Pessoas praticantes de " + decodeURIComponent(desporto))); // o conteudo da pagina é criado no mypages
             })
             .catch(erro => {
                 // sintaxe alternativa de funcoes em JS

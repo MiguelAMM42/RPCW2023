@@ -2,7 +2,7 @@
 
 ## Comandos
 
-- Comandos utilizados para criar uma REST API com JSON Server das informações do dataset `joined-dataset.json`:
+- Comandos utilizados para criar uma REST API com JSON Server das informações do dataset `joined-dataset.json`, gerando-se primeiramente as dependências necessárias para o projeto:
 
 ```properties
 npm init

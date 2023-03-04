@@ -75,7 +75,7 @@ exports.indexPage = function(){
 
                 <a href="/pessoas" target="_parent" style="text-decoration: none;margin: 1em"><button class="w3-button w3-block w3-round-large w3-blue">Listar todas as pessoas</button></a>
                 <a href="/sexo" target="_parent" style="text-decoration: none;margin: 1em"><button class="w3-button w3-block w3-round-large w3-blue">Distribuição por sexo</button></a>
-                <a href="/desporto" target="_parent" style="text-decoration: none;margin: 1em"><button class="w3-button w3-block w3-round-large w3-blue">Distribuição por desporto</button></a>
+                <a href="/desportos" target="_parent" style="text-decoration: none;margin: 1em"><button class="w3-button w3-block w3-round-large w3-blue">Distribuição por desporto</button></a>
                 <a href="/top10profissoes" target="_parent" style="text-decoration: none;margin: 1em"><button class="w3-button w3-block w3-round-large w3-blue">Top 10 profissões</button></a>
 
             </div>
@@ -147,6 +147,14 @@ exports.sexoPage = function(distribuicaoSexo){
 }
 
 
+
+/*
+exports.englishToPortuguese = function(english){
+    if (JSON.stringify(english) === JSON.stringify("false")) return "Não"
+    if (JSON.stringify(english) === JSON.stringify("true")) return "Sim"
+    else return english
+}*/
+
 exports.pessoaPage = function(pessoa){
     var pagHTML = `
     <!DOCTYPE html>
@@ -170,7 +178,21 @@ exports.pessoaPage = function(pessoa){
                         <p>Id: <b>${pessoa.id}</b></p>
                         <p>Nome: <b>${pessoa.nome}</b></p>
                         <p>Idade: <b>${pessoa.idade}</b></p>
-                        <p>Sexo: <b>${pessoa.sexo}</b></p>
+                        <p>Sexo: <b>${pessoa.sexo}</b></p>`
+
+                        if(pessoa.BI != null){
+                            pagHTML+=`<p>BI: <b>${pessoa.BI}</b></p>`
+                        }else{
+                            pagHTML+=`<p>CC: <b>${pessoa.CC}</b></p>`
+                        }
+
+                        if(pessoa.descrição != null){
+                            pagHTML+=`<p>Descrição: <b>${pessoa.descrição}</b></p>`
+                        }else{
+                            pagHTML+=`<p>Descrição: <b>Não disponível</b></p>`
+                        }
+
+                    pagHTML+= `
                     </div>
                 </div>
 
@@ -185,17 +207,120 @@ exports.pessoaPage = function(pessoa){
                 <div class="w3-card-4">
                     <div class="w3-container w3-margin">
                         <h2>Profissão</h2>
-                        <p>Profissão: <b>${pessoa.profissao}</b></p>
+                        <p><b>${pessoa.profissao}</b></p>
                     </div>
                 </div>
+
+
+                <div class="w3-card-4">
+                    <div class="w3-container w3-margin">
+                        <h2>Idealogias</h2>
+                        <p>Partido Político: <b>${pessoa.partido_politico.party_name} (${pessoa.partido_politico.party_abbr})</b></p>
+                        `
+
+                if(pessoa.religiao != null){
+                    pagHTML += `<p>Religião: <b>${pessoa.religiao}</b></p>`
+                }else{
+                    pagHTML += `<p>Religião: <b>Não especificada</b></p>`
+                }
+
+                pagHTML += `        
+                    </div>
+                </div>
+
 
                 <div class="w3-card-4">
                     <div class="w3-container w3-margin">
                         <h2>Desportos</h2>
-                        
+                    `
+
+
+                if(pessoa.desportos.length == 0){
+                    pagHTML += `<p>Não pratica desportos</p>`
+                }else
+                    pagHTML += `<ul>`
+                    for(var i = 0; i < pessoa.desportos.length; i++){
+                        pagHTML += `<li>${pessoa.desportos[i]}</li>`
+                    }
+                    pagHTML += `</ul>`
+                    
+
+                pagHTML += `
+                    </div>
+                </div>
+                <div class="w3-card-4">
+                    <div class="w3-container w3-margin">
+                        <h2>Animais</h2>
+                `
+
+
+                if(pessoa.animais.length == 0){
+                    pagHTML += `<p>Não tem animais de estimação</p>`
+                }else
+                    pagHTML += `<ul>`
+                    for(var i = 0; i < pessoa.animais.length; i++){
+                        pagHTML += `<li>${pessoa.animais[i]}</li>`
+                    }
+                    pagHTML += `</ul>`
+
+                    
+                    pagHTML += `
+                    </div>
+                </div>
+                `        
+
+                pagHTML += `
+                <div class="w3-card-4">
+                    <div class="w3-container w3-margin">
+                        <h2>Atributos</h2>
+                        <p>Fumador: <b>${pessoa.atributos.fumador}</b></p>
+                        <p>Gosta de cinema: <b>${pessoa.atributos.gosta_cinema}</b></p>
+                        <p>Gosta de viajar: <b>${pessoa.atributos.gosta_viajar}</b></p>
+                        <p>Acorda cedo: <b>${pessoa.atributos.acorda_cedo}</b></p>
+                        <p>Gosta de ler: <b>${pessoa.atributos.gosta_ler}</b></p>
+                        <p>Gosta de música: <b>${pessoa.atributos.gosta_musica}</b></p>
+                        <p>Gosta de comer: <b>${pessoa.atributos.gosta_comer}</b></p>
+                        <p>Gosta de animais de estimação: <b>${pessoa.atributos.gosta_animais_estimacao}</b></p>
+                        <p>Gosta de dançar: <b>${pessoa.atributos.gosta_dancar}</b></p>
+                        <p>Comida favorita: <b>${pessoa.atributos.comida_favorita}</b></p>
                     </div>
                 </div>
 
+                `
+
+                
+                pagHTML += `
+                <div class="w3-card-4">
+                    <div class="w3-container w3-margin">
+                        <h2>Outros factos</h2>
+                        <p>Figuras públicas favoritas:</p>`
+
+                        if(pessoa.figura_publica_pt.length == 0){
+                            pagHTML += `<p>Não tem figuras públicas favoritas</p>`
+                        }else
+                            pagHTML += `<ul>`
+                            for(var i = 0; i < pessoa.figura_publica_pt.length; i++){
+                                pagHTML += `<li>${pessoa.figura_publica_pt[i]}</li>`
+                            }
+                            pagHTML += `</ul>`
+
+                        pagHTML += `
+                        <p>Marca de carro favorita: <b>${pessoa.marca_carro}</b></p>
+                        <p>Destinos favoritos:</p>`
+                        
+                        if(pessoa.destinos_favoritos.length == 0){
+                            pagHTML += `<p>Não tem destinos favoritos</p>`
+                        }else
+                            pagHTML += `<ul>`
+                            for(var i = 0; i < pessoa.destinos_favoritos.length; i++){
+                                pagHTML += `<li>${pessoa.destinos_favoritos[i]}</li>`
+                            }
+                            pagHTML += `</ul>
+                            </div>`
+
+                        
+
+                pagHTML += `
             </div>
             
             <!-- <footer class="w3-container w3-blue">
@@ -254,4 +379,52 @@ exports.top10Profissoes = function(top10Profissoes){
     `
 
     return pagHTML 
+}
+
+exports.desportos = function(desportosOrdenados){
+    var pagHTML = `
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <link rel="stylesheet" href="../w3.css"> 
+            <title>Distribuição por desporto</title>
+        </head>
+        <body>
+
+            <header class="w3-container w3-blue">
+            <h1>Distribuição por desporto</h1>
+            </header>
+            
+            <div class="w3-container">`
+
+            
+
+    for(var i = 0; i < desportosOrdenados.length; i++){
+        pagHTML += `
+        <div class="w3-card-4">
+            <div class="w3-container w3-margin">
+                <h2>${desportosOrdenados[i].desporto}</h2>
+                <p>Quantidade de pessoas praticantes de ${desportosOrdenados[i].desporto}: <b>${desportosOrdenados[i].pessoas.length}</b></p>
+                <a href="/desporto/${desportosOrdenados[i].desporto}" target="_parent" style="text-decoration: none;margin: 1em"><button class="w3-button w3-block w3-round-large w3-blue">Listar pessoas praticantes de ${desportosOrdenados[i].desporto}</button></a> 
+                    
+            </div>
+        </div>`
+
+    }
+    
+
+
+    pagHTML += 
+            `</div>
+            
+            <!-- <footer class="w3-container w3-blue">
+            <h5>Generated in RPCW2023</h5>
+            </footer> -->
+            
+        </body>
+    </html>
+    `
+
+    return pagHTML //returns a string: HTML page
 }
