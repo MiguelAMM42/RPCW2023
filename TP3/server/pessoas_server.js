@@ -1,6 +1,7 @@
 // pessoas_server.js
-// RPCW: 2023-02-27
-// by jcr
+// RPCW: 2023-03-04
+// by Miguel Martins
+// adaptado do trabalho desenvolvido em aula por jcr
 
 var http = require('http')
 var url = require('url')
