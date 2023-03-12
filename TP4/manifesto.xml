@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifesto>
     <meta>
-        <título>TPC </título>
-        <subtítulo>.</subtítulo>
-        <data>2023-0-</data>
+        <título>TPC 4</título>
+        <subtítulo>Criação de uma <i>Single Page Application (SPA)</i> para listas de tarefas.</subtítulo>
+        <data>2023-03-12</data>
         <autor>
             <nome>Miguel Ângelo Machado Martins</nome>
             <id>PG50655</id>
@@ -15,11 +15,14 @@
         <!-- Possibilidade de bolds, itálicos e links -->
         <!-- <b>isto fica a bold</b> <i>isto fica a itálico</i> -->
         <!-- <xref url="URL para o recurso">referência externa</xref> -->
-        <p></p>
-        
+        <p>A página foi criada com 3 áreas: uma para inserir tarefas e outras 2 para ver as listas de tarefas resoslvidas e por resolver.</p>
+        <p>Na área de inserção é necessário colocar 3 informações: <i>deadline</i>, quem é suposto realizar a tarefa e a descrição da mesma.</p>
+        <p>Quando uma tarefa é submetida, ela aparece na lista de tarefas por realizar.</p>
+        <p>Nessa lista deve é possível marcar a tarefa como "feita", passando esta para a lista de tarefas realizadas, sendo também possível realizar a transação inversa</p>
+        <p>Também é possível apagar tarefas das listas.</p>   
     </resumo>
     <resultados>
-        <resultado path=""></resultado>
-        
+        <resultado path="server/">Diretoria na qual estão guardados os <i>scripts</i> em <i>JavaScript</i> necessários para a utilização do servidor.</resultado>
+        <resultado path="public/">Diretoria na qual estão guardados o <i>CSS</i> e o <i>favicon</i>.</resultado>        
     </resultados>
 </manifesto>
