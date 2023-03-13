@@ -20,6 +20,8 @@
         <p>Quando uma tarefa é submetida, ela aparece na lista de tarefas por realizar.</p>
         <p>Nessa lista deve é possível marcar a tarefa como "feita", passando esta para a lista de tarefas realizadas, sendo também possível realizar a transação inversa</p>
         <p>Também é possível apagar tarefas das listas.</p>   
+        <p>É ainda possível editar as tarefas em ambas as listas através de um <i>modal</i>.</p>
+        <p>Excetuando um pequeno pormenor nas tabelas que contém as listas, a interface é <i>mobile-friendly</i>.</p>
     </resumo>
     <resultados>
         <resultado path="server/">Diretoria na qual estão guardados os <i>scripts</i> em <i>JavaScript</i> necessários para a utilização do servidor.</resultado>

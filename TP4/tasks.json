@@ -1,30 +1,30 @@
 {
   "toDo": [
     {
-      "description": "Paulinho marcar contra o Arsenal",
-      "responsible": "Paulinho GOAT",
-      "dueDate": "2023-03-16",
-      "id": 1
+      "id": 1,
+      "description": "Paulinho marcar contra o Arsenal e passarmos aos quartos",
+      "responsible": "Paulenda",
+      "dueDate": "2023-03-16"
     },
     {
       "description": "Obter um kayak",
-      "responsible": "Eu ",
-      "dueDate": "2023-11-11",
+      "responsible": "Miguel Martins",
+      "dueDate": "2023-07-17",
       "id": 2
     }
   ],
   "resolved": [
     {
-      "id": "1",
-      "description": "Paulinho marcar golos",
-      "responsible": "Paulenda",
+      "id": 1,
+      "description": "Paulinho marcar (inacreditavelemente já leva 3 jogos seguidos a marcar: The true GOAT)",
+      "responsible": "Paulinho",
       "dueDate": "2023-03-12"
     },
     {
-      "id": "3",
       "description": "Aparar o bigode",
-      "responsible": "Eu",
-      "dueDate": "2023-03-12"
+      "responsible": "Miguel Martins",
+      "dueDate": "2023-03-12",
+      "id": 2
     }
   ]
 }

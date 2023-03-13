@@ -157,16 +157,23 @@ var tasksServer = http.createServer(function (req, res) {
                         if(result){
                             let deleteToDo = "http://localhost:3000/toDo/" + result.id
                             
-                            const requestDeleteToDo = axios.delete(deleteToDo);
-                            const requestAddToResolve = axios.post('http://localhost:3000/resolved', result);
-
-                            axios.all([requestDeleteToDo, requestAddToResolve]).then(axios.spread((...responses) => {
+                            // copy result to resultNoID , without the id
+                            const resultNoID = Object.assign({}, result);
+                            delete resultNoID.id;
+                        
+                            axios.delete(deleteToDo)
+                                .then(response1 => {
+                                    axios.post('http://localhost:3000/resolved', resultNoID);
+                                })
+                                .then(response2 => {
                                     res.statusCode = 302;
                                     res.setHeader('Location', '/');
                                     res.end();
-                                })).catch(errors => {
-                                    console.log("Erro: " + errors)
                                 })
+                                .catch(errors => {
+                                    console.log("Erro: " + errors);
+                                })
+
 
                         }else{
                             res.writeHead(201, {'Content-Type': 'text/html;charset=utf-8'})
@@ -180,18 +187,64 @@ var tasksServer = http.createServer(function (req, res) {
                         if(result){
                             let deleteResolved = "http://localhost:3000/resolved/" + result.id
                             
-                            const requestDeleteResolved = axios.delete(deleteResolved);
-                            const requestAddToToDo = axios.post('http://localhost:3000/toDo', result);
-
-                            axios.all([requestDeleteResolved, requestAddToToDo]).then(axios.spread((...responses) => {
+                            const resultNoID = Object.assign({}, result);
+                            delete resultNoID.id;
+                            
+                            
+                            axios.delete(deleteResolved)
+                                .then(response1 => {
+                                    axios.post('http://localhost:3000/toDo', resultNoID);
+                                })
+                                .then(response2 => {
                                     res.statusCode = 302;
                                     res.setHeader('Location', '/');
                                     res.end();
-                                })).catch(errors => {
+                                })
+                                .catch(errors => {
                                     console.log("Erro: " + errors)
                                 })
 
                         }else{
+                            res.writeHead(201, {'Content-Type': 'text/html;charset=utf-8'})
+                            res.write("<p>Unable to collect data from body...</p>")
+                            res.end()
+                        }
+                    });
+                }else if(req.url == '/editResolved'){
+                    collectRequestBodyData(req, result => {
+                        if(result){
+                            axios.put('http://localhost:3000/resolved/' + result.id, result)
+                                .then(function(resp) {
+                                    res.statusCode = 302;
+                                    res.setHeader('Location', '/');
+                                    res.end();
+                                }
+                                ).catch(erro => {
+                                    console.log("Erro: " + erro)
+                                }
+                            )
+                        }
+                        else{
+                            res.writeHead(201, {'Content-Type': 'text/html;charset=utf-8'})
+                            res.write("<p>Unable to collect data from body...</p>")
+                            res.end()
+                        }
+                    });
+                }else if(req.url == '/editToDo'){
+                    collectRequestBodyData(req, result => {
+                        if(result){
+                            axios.put('http://localhost:3000/toDo/' + result.id, result)
+                                .then(function(resp) {
+                                    res.statusCode = 302;
+                                    res.setHeader('Location', '/');
+                                    res.end();
+                                }
+                                ).catch(erro => {
+                                    console.log("Erro: " + erro)
+                                }
+                            )
+                        }
+                        else{
                             res.writeHead(201, {'Content-Type': 'text/html;charset=utf-8'})
                             res.write("<p>Unable to collect data from body...</p>")
                             res.end()
