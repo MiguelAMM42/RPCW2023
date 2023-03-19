@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifesto>
     <meta>
-        <título>TPC </título>
-        <subtítulo>.</subtítulo>
-        <data>2023-0-</data>
+        <título>TPC 5</título>
+        <subtítulo>Recreação do trabalho da semana anterior usando a nova metodologia e <i>framework</i>.</subtítulo>
+        <data>2023-03-19</data>
         <autor>
             <nome>Miguel Ângelo Machado Martins</nome>
             <id>PG50655</id>
@@ -15,11 +15,10 @@
         <!-- Possibilidade de bolds, itálicos e links -->
         <!-- <b>isto fica a bold</b> <i>isto fica a itálico</i> -->
         <!-- <xref url="URL para o recurso">referência externa</xref> -->
-        <p></p>
+        <p>Utilização do <i>Express.js</i> para recriar o trabalho do TPC4</p>
         
     </resumo>
     <resultados>
-        <resultado path=""></resultado>
-        
+        <resultado path="AppTasks/">Diretoria na qual estão guardados todos os ficheiros necessários para a utilização do servidor.</resultado>
     </resultados>
 </manifesto>

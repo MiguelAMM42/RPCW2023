@@ -1,0 +1,48 @@
+{
+  "toDo": [
+    {
+      "description": "Obter um kayak",
+      "responsible": "Miguel Martins",
+      "dueDate": "2023-07-17",
+      "id": 2
+    },
+    {
+      "description": "Comprar chiclas",
+      "responsible": "Jorge Jesus",
+      "dueDate": "2023-03-23",
+      "id": 3
+    },
+    {
+      "description": "Eliminar Juventus",
+      "responsible": "Pote",
+      "dueDate": "2023-04-20",
+      "id": 4
+    },
+    {
+      "description": "Polir a minha pagaia (a do Kayak :) )",
+      "responsible": "Miguel Martins do futuro",
+      "dueDate": "2036-03-26",
+      "id": 5
+    }
+  ],
+  "resolved": [
+    {
+      "description": "Aparar o bigode",
+      "responsible": "Miguel Martins",
+      "dueDate": "2023-03-12",
+      "id": 4
+    },
+    {
+      "description": "Paulinho não fazer uma ponta contra o Arsenal e POTE salvar o jogo",
+      "responsible": "Paulenda",
+      "dueDate": "2023-03-16",
+      "id": 5
+    },
+    {
+      "description": "Esgaio esgaiar na Europa",
+      "responsible": "Ricardo \"Pino\" Esgaio",
+      "dueDate": "2023-03-16",
+      "id": 6
+    }
+  ]
+}

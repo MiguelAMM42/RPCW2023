@@ -1,0 +1,126 @@
+extends layout
+
+block content
+  .w3-card-4
+    header.w3-container.w3-blue
+      h2 Task List
+    form(action="newTask" class="w3-container w3-mobile" method="POST")
+      fieldset.w3-margin
+        legend New task
+        label Task description:
+        input.w3-input.w3-round(type="text" name="description" required)
+        label Who is responsible:
+        input.w3-input.w3-round(type="text" name="responsible" required)
+        label Date:
+        input.w3-input.w3-round(type="date" name="dueDate" required)
+      button.w3-btn.w3-blue.w3-mb-2.w3-margin(type="submit") New Task
+    // tables side by side
+    .w3-row-padding.w3-mobile
+      .w3-half.w3-mobile
+        h2 To Do
+        table.w3-table.w3-bordered.w3-striped.w3-border.w3-hoverable.w3-white.w3-mobile(style="overflow-x:auto;")
+          thead.w3-mobile
+            tr.w3-blue.w3-mobile
+              th.w3-mobile Description
+              th.w3-mobile Responsible
+              th.w3-mobile Due Date
+              th.w3-mobile
+              th.w3-mobile
+              th.w3-mobile
+          tbody.w3-mobile
+            each task in toDo
+              // each row has a form to submit to mark it as done
+              tr.w3-mobile
+                td.w3-mobile= task.description
+                td.w3-mobile= task.responsible
+                td.w3-mobile= task.dueDate
+                td.w3-mobile
+                  form(action="deleteToDo" method="POST")
+                    input(type="hidden" name="id" value=task.id)
+                    button.w3-btn.w3-blue.w3-mb-2(type="submit") Delete
+                td.w3-mobile
+                  form(action="resolve" method="POST")
+                    input(type="hidden" name="id" value=task.id)
+                    input(type="hidden" name="description" value=task.description)
+                    input(type="hidden" name="responsible" value=task.responsible)
+                    input(type="hidden" name="dueDate" value=task.dueDate)
+                    button.w3-btn.w3-blue.w3-mb-2(type="submit") Resolve
+                td.w3-mobile
+                  button.w3-button.w3-blue(onclick="document.getElementById('editToDo').style.display='block'") Edit
+                  div#editToDo.w3-modal
+                    .w3-modal-content
+                      form(action="editToDo" method="POST")
+                        span.w3-button.w3-display-topright.w3-margin(onclick="document.getElementById('editToDo').style.display='none'") &times;
+                        fieldset.w3-margin
+                          legend Edit task
+                          label Task ID:
+                          input.w3-input.w3-round(type="text" name="id" value=task.id readonly)
+                          label Task description:
+                          input.w3-input.w3-round(type="text" name="description" value=task.description)
+                          label Who is responsible:
+                          input.w3-input.w3-round(type="text" name="responsible" value=task.responsible)
+                          label Date:
+                          input.w3-input.w3-round(type="date" name="dueDate" value=task.dueDate)
+                        button.w3-btn.w3-blue.w3-mb-2(type="submit") Edit Task
+      .w3-half.w3-mobile
+        h2 Done
+        table.w3-table.w3-bordered.w3-striped.w3-border.w3-hoverable.w3-white.w3-mobile(style="overflow-x:auto;")
+          thead.w3-mobile
+            tr.w3-blue.w3-mobile
+              th.w3-mobile Description
+              th.w3-mobile Responsible
+              th.w3-mobile Due Date
+              th.w3-mobile
+              th.w3-mobile
+              th.w3-mobile
+          tbody.w3-mobile
+            each task in resolved
+              // each row has a form to submit to mark it as done
+              tr.w3-mobile
+                td.w3-mobile= task.description
+                td.w3-mobile= task.responsible
+                td.w3-mobile= task.dueDate
+                td.w3-mobile
+                  form(action="deleteDone" method="POST")
+                    input(type="hidden" name="id" value=task.id)
+                    button.w3-btn.w3-blue.w3-mb-2(type="submit") Delete
+                td.w3-mobile
+                  form(action="undo" method="POST")
+                    input(type="hidden" name="id" value=task.id)
+                    input(type="hidden" name="description" value=task.description)
+                    input(type="hidden" name="responsible" value=task.responsible)
+                    input(type="hidden" name="dueDate" value=task.dueDate)
+                    button.w3-btn.w3-blue.w3-mb-2(type="submit") Undo
+                td.w3-mobile
+                  button.w3-button.w3-blue(onclick="document.getElementById('editDone').style.display='block'") Edit
+                  div#editDone.w3-modal
+                    .w3-modal-content
+                      form(action="editDone" method="POST")
+                        span.w3-button.w3-display-topright.w3-margin(onclick="document.getElementById('editDone').style.display='none'") &times;
+                        fieldset.w3-margin
+                          legend Edit task
+                          label Task ID:
+                          input.w3-input.w3-round(type="text" name="id" value=task.id readonly)
+                          label Task description:
+                          input.w3-input.w3-round(type="text" name="description" value=task.description)
+                          label Who is responsible:
+                          input.w3-input.w3-round(type="text" name="responsible" value=task.responsible)
+                          label Date:
+                          input.w3-input.w3-round(type="date" name="dueDate" value=task.dueDate)
+                        button.w3-btn.w3-blue.w3-mb-2(type="submit") Edit Task  
+
+                
+
+    script.
+      // Get the modal
+      var modal = document.getElementById('editToDo');
+      var modal = document.getElementById('editDone');
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+
+
+
