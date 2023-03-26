@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifesto>
     <meta>
-        <título>TPC </título>
-        <subtítulo>.</subtítulo>
-        <data>2023-0-</data>
+        <título>TPC 6</título>
+        <subtítulo>Lista das pessoas com <i>MongoDB</i>.</subtítulo>
+        <data>2023-03-26</data>
         <autor>
             <nome>Miguel Ângelo Machado Martins</nome>
             <id>PG50655</id>
@@ -15,11 +15,15 @@
         <!-- Possibilidade de bolds, itálicos e links -->
         <!-- <b>isto fica a bold</b> <i>isto fica a itálico</i> -->
         <!-- <xref url="URL para o recurso">referência externa</xref> -->
-        <p></p>
-        
+        <p>Utilização do <i>dataset</i> com informações de pessoas utilizado já no <b>TPC 3</b>, desta vez guardado numa base de dados <i>MongoDB</i>.</p>
+        <p>A estrutura da aplicação segue aquela utiliza em menor escala no trabalho de aula com o <i>dataset</i> de alunos.</p>
+        <p>É possível ver todas as instâncias em formato de lista (seria interessante colocar essa vista com paginação).</p>
+        <p>É possível ver uma instância em formato de detalhe.</p>
+        <p>É possível adicionar uma nova instância.</p>
+        <p>É possível editar uma instância.</p>
+        <p>É possível apagar uma instância.</p>
     </resumo>
     <resultados>
-        <resultado path=""></resultado>
-        
+        <resultado path="AppPessoas/">Diretoria na qual estão guardados todos os ficheiros necessários para a utilização do servidor.</resultado>
     </resultados>
 </manifesto>
