@@ -38,7 +38,11 @@ router.get('/pessoas/edit/:idPessoa', function(req, res, next) {
   var data = new Date().toISOString().slice(0, 19).replace('T', ' ');
   Pessoa.getPessoa(req.params.idPessoa)
     .then(pessoa => {
-      res.render('updatePessoaForm', {p: pessoa, d: data})
+      let fig_publica_pt = pessoa.figura_publica_pt.join(",")
+      let dest_favoritos = pessoa.destinos_favoritos.join(",")
+      let anim =  pessoa.animais.join(",")
+      let desp = pessoa.desportos.join(",")
+      res.render('updatePessoaForm', {p: pessoa, d: data,figura_publica_pt: fig_publica_pt, destinos_favoritos: dest_favoritos, animais: anim, desportos: desp })
     })
     .catch(erro => {
       res.render('error', {error: erro, message: "Erro na obtenção do registo de pessoa"})
@@ -135,9 +139,52 @@ router.post('/pessoas/registo', (req,res) => {
 // POST Student Update Form
 router.post('/pessoas/edit', (req,res) => {
   var data = new Date().toISOString().slice(0, 19).replace('T', ' ');
-  Pessoa.updatePessoa(req.body)
+
+  console.log("ID: " + req.body._id)
+
+  let desportosList = req.body.desportos.split(",");
+  let animaisList = req.body.animais.split(",");
+  let destinosList = req.body.destinos_favoritos.split(",");
+  let figurasList = req.body.figura_publica_pt.split(",");
+  
+  let pessoaToUpdate = {
+    _id : req.body._id,
+    nome: req.body.nome,
+    idade: req.body.idade,
+    sexo: req.body.sexo,
+    marca_carro : req.body.marca_carro,
+    religiao: req.body.religiao,
+    CC : req.body.CC,
+    profissao: req.body.profissao,
+    morada: {
+      cidade : req.body.cidade,
+      rua : req.body.distrito
+    },
+    partido_politico:{
+      party_name : req.body.party_name,
+      party_abbr : req.body.party_abbr
+    },
+    desportos: desportosList,
+    animais: animaisList,
+    destinos_favoritos: destinosList,
+    figura_publica_pt: figurasList,
+    atributos:{
+      fumador : req.body.fumador,
+      gosta_cinema: req.body.gosta_cinema,
+      gosta_viajar: req.body.gosta_viajar,
+      acorda_cedo: req.body.acorda_cedo,
+      gosta_ler: req.body.gosta_ler,
+      gosta_musica: req.body.gosta_musica,
+      gosta_comer: req.body.gosta_comer,
+      gosta_animais_estimacao: req.body.gosta_animais_estimacao,
+      gosta_dancar: req.body.gosta_dancar,
+      comida_favorita: req.body.comida_favorita
+    }
+  }
+
+  Pessoa.updatePessoa(pessoaToUpdate)
     .then(pessoa => {
-      res.render('updatePessoaConfirm', {p: pessoa})
+      res.render('updatePessoaConfirm', {p: pessoaToUpdate})
     })
     .catch(erro => {
       res.render('error', {error: erro, message: "Erro na alteração do registo de pessoa"})

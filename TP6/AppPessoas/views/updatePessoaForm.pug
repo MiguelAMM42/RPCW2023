@@ -2,32 +2,98 @@ extends layout
 block content 
 
     .w3-card-4
-        header.w3-container.w3-purple
-            h2 Student Form Update
-        form.w3-container(method="POST" action="/alunos/edit")
+        header.w3-container.w3-blue
+            h2 Person Form Update
+        form.w3-container(method="POST" action="/pessoas/edit")
             fieldset
-                legend Metadata
+                legend Data
                 label Id
-                input.w3-input.w3-round(type="text" name="id" value=a.id readonly)
+                input.w3-input.w3-round(type="text" name="_id" value=p._id readonly)
                 label Name
-                input.w3-input.w3-round(type="text" name="nome" value=a.nome)
-                label Git
-                input.w3-input.w3-round(type="text" name="gitlink" value=a.gitlink)
-                
-            fieldset
-                legend TPC
-                each i in [1,2,3,4,5,6,7,8]
-                    if a["tpc"+i]
-                        input.w3-check(type="checkbox" name="tpc"+i value="1" checked)
-                        label TPC#{i}
+                input.w3-input.w3-round(type="text" name="nome" value=p.nome)
+                label Age
+                input.w3-input.w3-round(type="text" name="idade" value=p.idade)
+                label Sexo
+                select.w3-input.w3-round(name="sexo") 
+                    option(value="masculino") Masculino
+                    option(value="feminino") Feminino
+                    option(value="outro") Outro
+                label Car Brand
+                input.w3-input.w3-round(type="text" name="marca_carro" value=p.marca_carro)
+                label Religion
+                input.w3-input.w3-round(type="text" name="religiao" value=p.religiao)
+                label Legal ID
+                if p.CC
+                    input.w3-input.w3-round(type="text" name="CC" value=p.CC)
+                else
+                    if p.BI
+                        input.w3-input.w3-round(type="text" name="CC" value=p.BI)
                     else
-                        input.w3-check(type="checkbox" name="tpc"+i value="1")
-                        label TPC#{i}
+                        input.w3-input.w3-round(type="text" name="CC" value="N/A")
+                label Address (City)
+                input.w3-input.w3-round(type="text" name="morada.cidade" value=p.morada.cidade)
+                label Address (District) 
+                input.w3-input.w3-round(type="text" name="morada.distrito" value=p.morada.distrito) 
+                label Description
+                input.w3-input.w3-round(type="text" name="descrição" value=p.descrição)
+                label Job
+                input.w3-input.w3-round(type="text" name="profissao" value=p.profissao)
+                label Political Party (Name)
+                input.w3-input.w3-round(type="text" name="party_name" value=p.partido_politico.party_name)
+                label Political Party (Abbr)
+                input.w3-input.w3-round(type="text" name="party_abbr" value=p.partido_politico.party_abbr)
+                label Sports (separated by commas)
+                input.w3-input.w3-round(type="text" name="desportos" value=desportos)
+                label Animals (separated by commas)
+                input.w3-input.w3-round(type="text" name="animais" value=animais)
+                label Favourite Destinies (separated by commas)
+                input.w3-input.w3-round(type="text" name="destinos_favoritos" value=destinos_favoritos)
+                label Favourite Portuguese Celebrities (separated by commas)
+                input.w3-input.w3-round(type="text" name="figura_publica_pt" value=figura_publica_pt)
+                label Smoker
+                select.w3-input.w3-round(type="checkbox" name="fumador" value=p.atributos.fumador)
+                    option(value="true") Yes
+                    option(value="false") No 
+                label Likes Cinema
+                select.w3-input.w3-round(type="checkbox" name="gosta_cinema" value=p.atributos.gosta_cinema)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Travelling
+                select.w3-input.w3-round(type="checkbox" name="gosta_viajar" value=p.atributos.gosta_viajar)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Wakes up early
+                select.w3-input.w3-round(type="checkbox" name="acorda_cedo" value=p.atributos.acorda_cedo)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Reading
+                select.w3-input.w3-round(type="checkbox" name="gosta_ler" value=p.atributos.gosta_ler)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Music
+                select.w3-input.w3-round(type="checkbox" name="gosta_musica" value=p.atributos.gosta_musica)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Eating
+                select.w3-input.w3-round(type="checkbox" name="gosta_comer" value=p.atributos.gosta_comer)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Pets
+                select.w3-input.w3-round(type="checkbox" name="gosta_animais_estimacao" value=p.atributos.gosta_animais_estimacao)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Dancing
+                select.w3-input.w3-round(type="checkbox" name="gosta_dancar" value=p.atributos.gosta_dancar)
+                    option(value="true") Yes
+                    option(value="false") No
+                label Favourite Food
+                input.w3-input.w3-round(type="text" name="comida_favorita" value=p.atributos.comida_favorita)
+                
+
                         
-            button.w3-btn.w3-purple.w3-mb-2(type="submit") Update
+            button.w3-btn.w3-blue.w3-mb-2.w3-margin(type="submit") Update
                
-        footer.w3-container.w3-purple
-            h5 Generated by EngWeb2023 in #{d} - [#[a(href="/") Return]]
+        footer.w3-container.w3-blue
+            h5 Generated by RPCW2023 in #{d} - [#[a(href="/") Return]]
                 
             
-            </div>

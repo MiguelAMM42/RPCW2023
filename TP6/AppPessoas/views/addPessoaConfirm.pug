@@ -1,7 +1,15 @@
 extends layout
 block content
-  h1 Student Record Updated: #{p._id}
-  pre= JSON.stringify(p) 
+  h1 Person Record Added: #{p._id}
+  .w3-container
+        .w3-card-4
+          .w3-container.w3-center
+            img.w3-circle(src="/images/user.webp" alt="Avatar" width="300")
+            ul.w3-ul.w3-card-4
+                li #[b Nome:] #{p.nome}
+                li #[b ID:] #{p._id}
+                li #[b Age:] #{p.idade}
+                li #[b Gender:] #{p.sexo}
   adress 
     a(href="/") Return
 

@@ -43,12 +43,18 @@ module.exports.addPessoa = p => {
 }
 
 module.exports.updatePessoa = p => {
-    return Student.updateOne({_id: p._id}, p) // updateOne
+
+    const objectId = new ObjectId(p._id);
+
+    console.log(p)
+
+    return Student.updateOne({_id: objectId}, p) // updateOne
         .then(resposta => {
             console.dir(resposta)
             return resposta
         })
         .catch(err => {
+            console.log(err)
             return err
         })
 }
