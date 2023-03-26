@@ -31,6 +31,11 @@ block content
                 else
                   li #[b Gender:] --------------
               .w3-card-4
+                if p.religiao
+                  li #[b Religion:] #{p.religiao}
+                else
+                  li #[b Religion:] --------------
+              .w3-card-4
                 if p.profissao
                   li #[b Job] #{p.profissao}
                 else

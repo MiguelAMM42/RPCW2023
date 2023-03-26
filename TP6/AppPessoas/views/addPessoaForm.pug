@@ -2,29 +2,112 @@ extends layout
 block content 
 
     .w3-card-4
-        header.w3-container.w3-purple
-            h2 Student Form
+        header.w3-container.w3-blue
+            h2 Person Form
         form.w3-container(method="POST")
             fieldset
-                legend Metadata
-                label Id
-                input.w3-input.w3-round(type="text" name="id")
+                legend Data
+                label ID
+                input.w3-input.w3-round(type="text" name="_id" required) 
                 label Name
                 input.w3-input.w3-round(type="text" name="nome")
-                label Git
-                input.w3-input.w3-round(type="text" name="gitlink")
+                label Idade
+                input.w3-input.w3-round(type="number" name="idade")
+                label Sexo
+                select.w3-input.w3-round(name="sexo") 
+                    option(value="masculino") Masculino
+                    option(value="feminino") Feminino
+                    option(value="outro") Outro
+                label Car Brand
+                input.w3-input.w3-round(type="text" name="marca_carro")
+                label Religion
+                input.w3-input.w3-round(type="text" name="religiao")
+                label Legal ID
+                input.w3-input.w3-round(type="text" name="CC")
+                label Description
+                input.w3-input.w3-round(type="text" name="descrição")
+                label Job
+                input.w3-input.w3-round(type="text" name="profissao")
                 
+            fieldset 
+                legend Address 
+                label City 
+                input.w3-input.w3-round(type="text" name="cidade")
+                label District
+                input.w3-input.w3-round(type="text" name="distrito")
+
+            fieldset 
+                legend Political Party
+                label Name
+                input.w3-input.w3-round(type="text" name="party_name")
+                label Abbr
+                input.w3-input.w3-round(type="text" name="party_abbr")
+
+            fieldset 
+                legend Sports
+                label Sports (separated by commas)
+                input.w3-input.w3-round(type="text" name="desportos")
+
+            fieldset 
+                legend Animals
+                label Animals (separated by commas)
+                input.w3-input.w3-round(type="text" name="animais")
+
+            fieldset 
+                legend Favourite Destinies
+                label Favourite Destinies (separated by commas)
+                input.w3-input.w3-round(type="text" name="destinos_favoritos")
+
+            fieldset 
+                legend Favourite Portuguese Celebrities
+                label Favourite Portuguese Celebrities (separated by commas)
+                input.w3-input.w3-round(type="text" name="figura_publica_pt")
+
             fieldset
-                legend TPC
-                each i in [1,2,3,4,5,6,7,8]
-                    input.w3-check(type="checkbox" name="tpc"+i value="1")
-                    label TPC#{i}
+                legend Attributes
+                label Smoker
+                select.w3-input.w3-round(type="checkbox" name="fumador" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Cinema
+                select.w3-input.w3-round(type="checkbox" name="gosta_cinema" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Travelling
+                select.w3-input.w3-round(type="checkbox" name="gosta_viajar" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Wakes up early
+                select.w3-input.w3-round(type="checkbox" name="acorda_cedo" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Reading
+                select.w3-input.w3-round(type="checkbox" name="gosta_ler" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Music
+                select.w3-input.w3-round(type="checkbox" name="gosta_musica" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Eating
+                select.w3-input.w3-round(type="checkbox" name="gosta_comer" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Pets
+                select.w3-input.w3-round(type="checkbox" name="gosta_animais_estimacao" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Likes Dancing
+                select.w3-input.w3-round(type="checkbox" name="gosta_dancar" value="true")
+                    option(value="true") Yes
+                    option(value="false") No
+                label Favourite Food
+                input.w3-input.w3-round(type="text" name="comida_favorita")
+                
                         
                     
-            button.w3-btn.w3-purple.w3-mb-2(type="submit") Add
+            button.w3-btn.w3-blue.w3-mb-2.w3-margin(type="submit") Add
                
-        footer.w3-container.w3-purple
+        footer.w3-container.w3-blue
             h5 Generated by EngWeb2023 in #{d} - [#[a(href="/") Return]]
                 
-            
-            </div>

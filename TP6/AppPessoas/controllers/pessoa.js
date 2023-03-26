@@ -32,6 +32,7 @@ module.exports.getPessoa = id => {
 }
 
 module.exports.addPessoa = p => {
+    console.log(p)
     return Student.create(p)
         .then(resposta => {
             return resposta
@@ -52,8 +53,10 @@ module.exports.updatePessoa = p => {
         })
 }
 
-module.exports.deletePessoa = _id => {
-    return Student.deleteOne({_id: _id})
+module.exports.deletePessoa = id => {
+    const objectId = new ObjectId(id);
+
+    return Student.deleteOne({_id: objectId})
     .then(resposta => {
         console.dir(resposta)
         return resposta
